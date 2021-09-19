@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<section class="projects-horizontal" onload="f();">
+            <div class="container">
+               <div class="intro">
+                  <h2 class="text-center">Предметы</h2>
+                  <p class="text-center">Краткий обзор какие предметы&nbsp; есть на данном сайте за 2020-2021 уч.г. Чтобы воспользоваться ими, пожалуйста зарегистрируйтесь или войдите в систему</p>
+               </div>
+               <div class="row projects">
+                  <div class="col-sm-6 item">
+                     <div class="row">
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="https://bitoflife.ru/wp-content/uploads/2019/10/s1200-1024x819.jpg"></a></div>
+                        <div class="col">
+                           <h3 class="name">Астрономия</h3>
+                           <p class="description">Полная копия тетради по астрономии, со всеми решенными домашними заданиями</p>
+                        </div>
+                     </div>
+                     <a class="btn btn-primary" href="{% url 'astr' %}" type="button" style="margin: 15px;">Перейти</a>
+                  </div>
+                  <div class="col-sm-6 item">
+                     <div class="row">
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="https://www.binoculars-travel.ru/images/Vena-bal/Venskie-baly8.jpg"></a></div>
+                        <div class="col">
+                           <h3 class="name">Бал</h3>
+                           <p class="description">Вся музыка с бала, которая была на репетициях</p>
+                        </div>
+                     </div>
+                     <a class="btn btn-primary" type="button" style="margin: 15px;">Перейти</a>
+                  </div>
+                  <div class="col-sm-6 item">
+                     <div class="row">
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="https://intellectyal.ru/wp-content/uploads/2021/04/i28-1.jpg"></a></div>
+                        <div class="col">
+                           <h3 class="name">Информатика</h3>
+                           <p class="description">Здесь будут сайты по информатике, которые придется делать в 11 классе</p>
+                        </div>
+                     </div>
+                     <a class="btn btn-primary"  type="button" style="margin: 15px;">Перейти</a>
+                  </div>
+                  <div class="col-sm-6 item">
+                     <div class="row">
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v351-kul-24b-equalizerbackground_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=d8bcdfb12cfbded505a15d677c3eaf58"></a></div>
+                        <div class="col">
+                           <h3 class="name">Пустая графа</h3>
+                           <p class="description">Здесь пустая графа, возможно сюда что-то добавится позже</p>
+                        </div>
+                     </div>
+                     <button class="btn btn-secondary" type="button" style="margin: 15px;">Сюда перейти нельзя :-(</button>
+                  </div>
+               </div>
+            </div>
+         </section>
+{% endblock %}
+
+
+
+{% block extra_js %}
+<script src="{% static 'js/main.js' %}" </script>
+{% endblock %}

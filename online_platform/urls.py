@@ -20,5 +20,8 @@ from first import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index_page)
+    path('', views.index_page),
+    path('astr/', views.astr_page, name="astr")
 ]
+
+handler404 = "first.views.page_not_found_view"

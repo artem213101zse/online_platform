@@ -1,0 +1,218 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container">
+
+
+    <!-- Button trigger modal -->
+<button style="display: none" id=trigger type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="staticBackdropLabel"><b>Укажите город</b></h4>
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+      </div>
+      <div class="modal-body" >
+          Пожалуйста, для продолжения работы с сайтом, укажите ваш город <br><br>
+          <h5 id="tes1" style="display: none; "><b>Город определён, теперь можно продолжить</b></h5>
+          <a class="btn btn-primary" href="#" id="auto_search" onclick="getGeo()" role="button">Определить автоматически</a> <br>
+
+        <form action="/astr/" method="POST">
+            <div style="display;">
+            {% csrf_token %}
+
+                {% for item in form %}
+            <div class="form-group form-row">
+                <div class="col">
+                    {{ item }}
+                </div>
+            </div>
+        {% endfor %}
+            </div>
+            <div class="modal-footer">
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>-->
+        <input type="submit" id="well_done" disabled=true class="btn btn-primary" value="Продолжить">
+      </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Номер страницы</th>
+      <th scope="col">Страница(на нее можно нажать)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+1
+      </th>
+      <td>
+<a href="https://ibb.co/VYP3spq"><img src="https://i.ibb.co/VYP3spq/20210901-1.png" alt="20210901-1" border="0"></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+2
+      </th>
+      <td>
+<a href="https://ibb.co/3RCtkwD"><img src="https://i.ibb.co/3RCtkwD/20210901-2.png" alt="20210901-2" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+3
+      </th>
+      <td>
+<a href="https://ibb.co/5LDrvs5"><img src="https://i.ibb.co/5LDrvs5/20210901-3.png" alt="20210901-3" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+4
+      </th>
+      <td>
+<a href="https://ibb.co/Jx1cc9k"><img src="https://i.ibb.co/Jx1cc9k/20210901-4.png" alt="20210901-4" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+5
+      </th>
+      <td>
+<a href="https://ibb.co/fqW0BWh"><img src="https://i.ibb.co/fqW0BWh/20210901-5.png" alt="20210901-5" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+6
+      </th>
+      <td>
+<a href="https://ibb.co/HN8Zr3c"><img src="https://i.ibb.co/HN8Zr3c/20210901-6.png" alt="20210901-6" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+7
+      </th>
+      <td>
+<a href="https://ibb.co/FXtJ9WD"><img src="https://i.ibb.co/FXtJ9WD/20210901-7.png" alt="20210901-7" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+8
+      </th>
+      <td>
+<a href="https://ibb.co/sJwLkT9"><img src="https://i.ibb.co/sJwLkT9/20210901-8.png" alt="20210901-8" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+9
+      </th>
+      <td>
+<a href="https://ibb.co/RHbrkp3"><img src="https://i.ibb.co/RHbrkp3/20210901-9.png" alt="20210901-9" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+10
+      </th>
+      <td>
+<a href="https://ibb.co/G9YjP0d"><img src="https://i.ibb.co/G9YjP0d/20210901-10.png" alt="20210901-10" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+11
+      </th>
+      <td>
+<a href="https://ibb.co/tbhbhfh"><img src="https://i.ibb.co/tbhbhfh/20210901-11.png" alt="20210901-11" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+12
+      </th>
+      <td>
+<a href="https://ibb.co/gycZTGb"><img src="https://i.ibb.co/gycZTGb/20210901-12.png" alt="20210901-12" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+13
+      </th>
+      <td>
+<a href="https://ibb.co/CQd4WZd"><img src="https://i.ibb.co/CQd4WZd/20210901-13.png" alt="20210901-13" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+14
+      </th>
+      <td>
+<a href="https://ibb.co/MDCrdfr"><img src="https://i.ibb.co/MDCrdfr/20210901-14.png" alt="20210901-14" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+15
+      </th>
+      <td>
+<a href="https://ibb.co/7rsCnkq"><img src="https://i.ibb.co/7rsCnkq/20210901-15.png" alt="20210901-15" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+16
+      </th>
+      <td>
+<a href="https://ibb.co/MnrXJYx"><img src="https://i.ibb.co/MnrXJYx/20210901-16.png" alt="20210901-16" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+17
+      </th>
+      <td>
+<a href="https://ibb.co/kJ31z54"><img src="https://i.ibb.co/kJ31z54/20210901-17.png" alt="20210901-17" border="0"></a>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+18
+      </th>
+      <td>
+<a href="https://ibb.co/6smVnkW"><img src="https://i.ibb.co/6smVnkW/20210901-18.png" alt="20210901-18" border="0"></a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+{% endblock %}
+
+
+
+{% block extra_js %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

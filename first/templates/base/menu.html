@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+            <div class="container">
+               <a class="navbar-brand" href="#">Platform</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+               <div class="collapse navbar-collapse" id="navcol-1">
+                  <ul class="navbar-nav d-flex me-auto">
+        {% for menu_item in menu %}
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+                      </li>
+        {% endfor %}
+      </ul>
+
+      <ul class="navbar-nav mr-1">
+            {% block usermenu %}
+            <li class="nav-item">
+                {% if request.user.is_authenticated %}
+                    <a class="nav-link" href="/logout/">Выйти</a>
+            </li>
+                {% else %}
+            <li>
+                    <a class="nav-link" href="/register/">Регистрация</a>
+            </li>
+                    <a class="nav-link" href="/login/">Войти</a>
+            </li>
+                {% endif %}
+            {% endblock %}
+        </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+
