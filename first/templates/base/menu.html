@@ -14,7 +14,9 @@
             {% block usermenu %}
             <li class="nav-item">
                 {% if request.user.is_authenticated %}
-                    <a class="nav-link" href="/logout/">Выйти</a>
+                   <li> <a class="nav-link disable">Текущий пользователь: {{ request.user.first_name }} </a></li>
+
+          <li> <a class="nav-link" href="/logout/">Выйти</a> </li>
             </li>
                 {% else %}
             <li>

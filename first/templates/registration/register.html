@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container text-center">
+
+
+<h3>Регистрация</h3><hr>
+
+<form action="." method="POST" class="">
+    <div class="container col md-3">
+    {% for item in user_form %}
+        <div class="mt-2">{{ item.label }}:</div> <div class=" mt-2"> {{ item }}</div>
+    {% endfor %}
+    {% csrf_token %}
+    <button type="submit" class="btn mt-3 btn-primary">Зарегистрироваться</button>
+    </div>
+</form>
+</div>
+{% endblock %}

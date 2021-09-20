@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container text-center">
+
+
+<h3>Войти в систему</h3><hr>
+
+<form action="." method="POST" class="md-3">
+
+    {% for item in form %}
+    <div class="mt-2">{{ item }}</div>
+    {% endfor %}
+    {% csrf_token %}
+    <button type="submit" class="btn mt-2 btn-primary">Войти</button>
+
+</form>
+</div>
+{% endblock %}

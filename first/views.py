@@ -1,10 +1,13 @@
 import datetime
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-
-from first.forms import GeoForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+from first.forms import GeoForm, LoginForm, UserRegistrationForm
 from first.models import GeoHistory
+
 
 
 def get_menu_context():
@@ -63,5 +66,55 @@ def astr_page(request):
     return render(request, 'pages/astr.html', context)
 
 
-def page_not_found_view(request, exception):
+def page_not_found_view_404(request, exception):
     return render(request, 'errors/404.html', status=404)
+
+
+def page_not_found_view_500(exception):
+    return render('errors/500.html', status=500)
+
+
+def user_login(request):
+    context = {
+        'menu': get_menu_context(),
+        'pagename': 'Войти в систему'
+    }
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request,
+                                username=cd['username'],
+                                password=cd['password'])
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                messages.success(request, "Авторизация успешна")
+                return redirect(index_page)
+            else:
+                messages.success(request, "Аккаунт отключен. Обратитесь к администрции")
+        else:
+            messages.success(request, "Неверный логин или пароль")
+    else:
+        form = LoginForm()
+    context['form'] = form
+    return render(request, 'registration/login.html', context)
+
+
+def user_logout(request):
+    logout(request)
+    messages.success(request, "Вы успешно вышли из системы")
+    return redirect(index_page)
+
+def register(request):
+    if request.method=="POST":
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(user_form.cleaned_data['password'])
+            new_user.save()
+            messages.success(request, "Вы успешно зарегистрировались. Теперь Вы можете войти в систему")
+            return render(request, 'registration/login.html', {'new_user': new_user})
+    else:
+        user_form=UserRegistrationForm()
+    return render(request, 'registration/register.html', {'user_form': user_form})

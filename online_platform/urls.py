@@ -15,13 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth import views as auth_views
 
 from first import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_page),
-    path('astr/', views.astr_page, name="astr")
+    path('astr/', views.astr_page, name="astr"),
+    path('login/', views.user_login, name="login"),
+    path('logout/', views.user_logout, name="logout"),
+    path('register/', views.register, name="register"),
 ]
 
-handler404 = "first.views.page_not_found_view"
+handler404 = "first.views.page_not_found_view_404"
+handler500 = "first.views.page_not_found_view_500"

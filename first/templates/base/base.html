@@ -20,7 +20,19 @@
     <header>
         {% include 'base/menu.html' %}
     </header>
-    <main>
+    <main class="container">
+            {% if messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+        <p>
+            {{ message }}
+        </p>
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+    {% endif %}
+
         {% block content %} {% endblock %}
     </main>
     <footer>
