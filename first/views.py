@@ -30,22 +30,35 @@ def astr_page(request):
         'menu': get_menu_context(),
         'pagename': 'Астрономия'
     }
+    geo_flag = True
 
-    if request.method == 'POST':
-        f = GeoForm(request.POST)
-        if f.is_valid():
+    last_date = GeoHistory.objects.latest("date").date.date()
+    last_time = GeoHistory.objects.latest("date").date.time()
+    now_date = datetime.datetime.now().date()
+    now_time = datetime.datetime.now().time()
+    delta_d = now_date - last_date
+    if delta_d.days == 0:
+        if now_time.hour - last_time.hour == 0:
+            if now_time.minute - last_time.minute <= 15:
+                geo_flag = False
 
-            a = f.data['latitude']
-            b = f.data['longitude']
-            c = f.data['altitude']
+    context['geo_flag'] = geo_flag
+    if geo_flag:
+        if request.method == 'POST':
+            f = GeoForm(request.POST)
+            if f.is_valid():
 
-            item = GeoHistory(date=datetime.datetime.now(), latitude=a, longitude=b, altitude=c, author=main_user)
-            item.save()
-            context['form'] = f
+                a = f.data['latitude']
+                b = f.data['longitude']
+                c = f.data['altitude']
+
+                item = GeoHistory(date=datetime.datetime.now() + datetime.timedelta(hours=3, minutes=0), latitude=a, longitude=b, altitude=c, author=main_user)
+                item.save()
+                context['form'] = f
+            else:
+                context['form'] = f
         else:
-            context['form'] = f
-    else:
-        context['form'] = GeoForm()
+            context['form'] = GeoForm()
 
     return render(request, 'pages/astr.html', context)
 
