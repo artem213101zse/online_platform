@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'db',
         'USER' : 'dbuser',
         'PASSWORD' : 'dbpassword',
-        'HOST' : '127.0.0.1',
+        'HOST' : 'gdza.herokuapp.com',
         'PORT' : '5432',
     }
 }
