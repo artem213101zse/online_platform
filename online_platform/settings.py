@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-!!t0hy*k-x=3j+(vd_icgm17epp1lufu5=qa5*-23e(mh!o42p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'gdza.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'gdza.herokuapp.com', '0.0.0.0']
 
 # Application definition
 
@@ -115,10 +115,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -126,3 +122,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_URL = '/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
