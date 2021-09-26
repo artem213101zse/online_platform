@@ -8,8 +8,6 @@ from django.http import HttpResponse
 from first.forms import GeoForm, LoginForm, UserRegistrationForm
 from first.models import GeoHistory
 
-from django.template import RequestContext
-
 
 def get_menu_context():
     return [
@@ -36,15 +34,18 @@ def astr_page(request):
     }
     geo_flag = True
 
-    last_date = GeoHistory.objects.latest("date").date.date()
-    last_time = GeoHistory.objects.latest("date").date.time()
-    now_date = datetime.datetime.now().date()
-    now_time = datetime.datetime.now().time()
-    delta_d = now_date - last_date
-    if delta_d.days == 0:
-        if now_time.hour - last_time.hour == 0:
-            if now_time.minute - last_time.minute <= 15:
-                geo_flag = False
+    filt_obj = GeoHistory.objects.filter(author=main_user)
+
+    if (filt_obj):
+        last_date = GeoHistory.objects.latest("date").date.date()
+        last_time = GeoHistory.objects.latest("date").date.time()
+        now_date = datetime.datetime.now().date()
+        now_time = datetime.datetime.now().time()
+        delta_d = now_date - last_date
+        if delta_d.days == 0:
+            if now_time.hour - last_time.hour == 0:
+                if now_time.minute - last_time.minute <= 15:
+                    geo_flag = False
 
     context['geo_flag'] = geo_flag
     if geo_flag:
