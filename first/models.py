@@ -11,7 +11,7 @@ class GeoHistory(models.Model):
     altitude = models.FloatField(verbose_name="Высота")
     direction = models.FloatField(verbose_name="Направление")
     speed = models.FloatField(verbose_name="Скорость")
-    author = models.TextField(verbose_name="Автор")
+    author = models.TextField(verbose_name="Пользователь")
 
     class Meta:
         verbose_name = 'Геоданные'

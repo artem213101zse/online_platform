@@ -21,7 +21,7 @@ from first import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index_page),
+    path('', views.index_page, name="index"),
     path('astr/', views.astr_page, name="astr"),
     path('login/', views.user_login, name="login"),
     path('logout/', views.user_logout, name="logout"),

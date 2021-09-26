@@ -113,6 +113,10 @@ def user_logout(request):
     return redirect(index_page)
 
 def register(request):
+    context = {
+        'menu': get_menu_context(),
+        'pagename': 'Регистрация'
+    }
     if request.method=="POST":
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
@@ -123,4 +127,5 @@ def register(request):
             return render(request, 'registration/login.html', {'new_user': new_user})
     else:
         user_form=UserRegistrationForm()
-    return render(request, 'registration/register.html', {'user_form': user_form})
+    context['user_form'] = user_form
+    return render(request, 'registration/register.html', context)
