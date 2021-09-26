@@ -52,16 +52,20 @@ def astr_page(request):
         if request.method == 'POST':
             f = GeoForm(request.POST)
             if f.is_valid():
+                f = GeoForm(request.POST)
+                lat = f.data['lat']
+                lon = f.data['lon']
+                acc = f.data['acc']
+                alt = f.data['alt']
+                dir = f.data['dir']
+                spd = f.data['spd']
 
-                a = f.data['latitude']
-                b = f.data['longitude']
-                c = f.data['altitude']
-
-                item = GeoHistory(date=datetime.datetime.now() + datetime.timedelta(hours=3, minutes=0), latitude=a, longitude=b, altitude=c, author=main_user)
+                item = GeoHistory(date=datetime.datetime.now() + datetime.timedelta(hours=3, minutes=0), latitude=lat, longitude=lon, accuracy=acc, altitude=alt, direction=dir, speed=spd, author=main_user)
                 item.save()
                 context['form'] = f
             else:
                 context['form'] = f
+                print("Form is not valid!")
         else:
             context['form'] = GeoForm()
 

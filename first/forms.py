@@ -3,34 +3,51 @@ from django.contrib.auth.models import User
 
 
 class GeoForm(forms.Form):
-    latitude = forms.FloatField(
+    lat = forms.FloatField(
         label='Широта',
-        required=True,
-        max_value=1000,
-        min_value=0,
         widget=forms.HiddenInput(
             attrs={
                 'id': 'latitude',
             }
         )
     )
-    longitude = forms.FloatField(
+    lon = forms.FloatField(
         label='Долгота',
-        required=True,
-        max_value=1000,
-        min_value=0,
         widget=forms.HiddenInput(
             attrs={
                 'id': 'longitude',
             }
         )
     )
-    altitude = forms.FloatField(
+    acc = forms.FloatField(
+        label='Точность',
+        widget=forms.HiddenInput(
+            attrs={
+                'id': 'accuracy',
+            }
+        )
+    )
+    alt = forms.FloatField(
         label='Высота',
-        required=True,
         widget=forms.HiddenInput(
             attrs={
                 'id': 'altitude',
+            }
+        )
+    )
+    dir = forms.FloatField(
+        label='Направление',
+        widget=forms.HiddenInput(
+            attrs={
+                'id': 'heading',
+            }
+        )
+    )
+    spd = forms.FloatField(
+        label='Скорость',
+        widget=forms.HiddenInput(
+            attrs={
+                'id': 'speed',
             }
         )
     )

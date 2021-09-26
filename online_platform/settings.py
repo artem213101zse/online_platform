@@ -30,11 +30,9 @@ if os.environ.get('DJANGO_DEBUG'):
 else:
     DEBUG = False
     print("Debug is disables.")
-    ALLOWED_HOSTS = ["*"]
 
 
-ALLOWED_HOSTS = ['gdza.herokuapp.com', '127.0.0.1', '0.0.0.0']
-
+ALLOWED_HOSTS = ['gdza.herokuapp.com', '127.0.0.1', '0.0.0.0', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
@@ -91,10 +89,10 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-    #}
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 # Password validation
