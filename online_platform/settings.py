@@ -28,7 +28,7 @@ if os.environ.get('DJANGO_DEBUG'):
     # When not specified, ALLOW_HOSTS defaults to:
     # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 else:
-    DEBUG = False
+    DEBUG = True
     print("Debug is disables.")
 
 
