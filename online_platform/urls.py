@@ -29,4 +29,4 @@ urlpatterns = [
 ]
 
 handler404 = "first.views.page_not_found_view_404"
-handler500 = "first.views.page_not_found_view_500"
+#handler500 = "first.views.page_not_found_view_500"

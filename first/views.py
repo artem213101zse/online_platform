@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from first.forms import GeoForm, LoginForm, UserRegistrationForm
 from first.models import GeoHistory
 
+from django.template import RequestContext
 
 
 def get_menu_context():
@@ -70,8 +71,8 @@ def page_not_found_view_404(request, exception):
     return render(request, 'errors/404.html', status=404)
 
 
-def page_not_found_view_500(exception):
-    return render('errors/500.html', status=500)
+#def page_not_found_view_500(request, exception):
+    #return render(request, exception, 'errors/500.html', status=500)
 
 
 def user_login(request):
